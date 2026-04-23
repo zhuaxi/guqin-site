@@ -1,18 +1,15 @@
-/* 页面背景 */
 body {
   margin: 0;
   background: #d8cbb2;
   font-family: "KaiTi", "STKaiti", serif;
 }
 
-/* 外层 */
 .page {
   display: flex;
   justify-content: center;
   padding: 40px 0;
 }
 
-/* A4纸 */
 .paper {
   width: 794px;
   height: 1123px;
@@ -22,7 +19,6 @@ body {
   padding: 80px 60px;
 }
 
-/* 外框（古籍风） */
 .paper::before {
   content: "";
   position: absolute;
@@ -30,7 +26,6 @@ body {
   border: 2px solid #222;
 }
 
-/* 标题 */
 .title {
   text-align: center;
   font-size: 28px;
@@ -38,7 +33,6 @@ body {
   letter-spacing: 4px;
 }
 
-/* 列容器（右→左） */
 .columns {
   display: flex;
   flex-direction: row-reverse;
@@ -46,34 +40,65 @@ body {
   height: 900px;
 }
 
-/* 每一列 */
 .column {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
-/* 每个字格 */
 .cell {
-  width: 40px;
-  height: 60px;
+  width: 64px;
+  height: 74px;
   position: relative;
-  text-align: center;
 }
 
-/* 上方小字（徽位/弦位） */
-.top {
+.part {
   position: absolute;
-  top: 0;
-  width: 100%;
-  font-size: 14px;
-}
-
-/* 主字（减字） */
-.main {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  font-size: 26px;
   line-height: 1;
+  white-space: nowrap;
+  color: #1f1712;
+}
+
+.main {
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.top {
+  font-size: 14px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.topMark {
+  font-size: 12px;
+  top: 14px;
+  left: 14px;
+}
+
+.left {
+  font-size: 14px;
+  top: 22px;
+  left: 2px;
+}
+
+.right {
+  font-size: 14px;
+  top: 22px;
+  right: 2px;
+}
+
+.rightBottom {
+  font-size: 12px;
+  bottom: 6px;
+  right: 6px;
+}
+
+.bottom {
+  font-size: 12px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
