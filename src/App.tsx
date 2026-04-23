@@ -1,74 +1,42 @@
-body {
-  margin: 0;
-  background: #e9e2d0;
-  font-family: "KaiTi", "STKaiti", serif;
-}
+import { useState } from "react";
+import "./styles.css";
 
-.page {
-  display: flex;
-  justify-content: center;
-  padding: 40px;
-}
+type Note = {
+  main: string;
+  left?: string;
+  hui?: string;
+  xian?: string;
+};
 
-.paper {
-  width: 794px;
-  height: 1123px;
-  background: #fdf6e3;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  padding: 40px;
-  position: relative;
-}
+export default function App() {
+  const [notes, setNotes] = useState<Note[]>([]);
 
-.title {
-  text-align: center;
-  font-size: 28px;
-  margin-bottom: 20px;
-}
+  const addNote = () => {
+    setNotes([...notes, { main: "勾", left: "按", hui: "七", xian: "三" }]);
+  };
 
-.notation {
-  display: flex;
-  flex-direction: row-reverse;
-  gap: 20px;
-}
+  return (
+    <div className="page">
+      <div className="paper">
+        <div className="title">古琴减字谱</div>
 
-.column {
-  writing-mode: vertical-rl;
-}
+        <div className="notation">
+          {notes.map((n, i) => (
+            <div key={i} className="column">
+              <div className="note">
+                {n.left && <div className="left">{n.left}</div>}
+                <div className="main">{n.main}</div>
+                {n.hui && <div className="hui">{n.hui}</div>}
+                {n.xian && <div className="xian">{n.xian}</div>}
+              </div>
+            </div>
+          ))}
+        </div>
 
-.note {
-  position: relative;
-  width: 40px;
-  height: 200px;
-}
-
-.main {
-  font-size: 28px;
-  text-align: center;
-}
-
-.left {
-  position: absolute;
-  left: -15px;
-  top: 40px;
-  font-size: 14px;
-}
-
-.hui {
-  position: absolute;
-  right: -10px;
-  top: 20px;
-  font-size: 12px;
-}
-
-.xian {
-  position: absolute;
-  right: -10px;
-  bottom: 20px;
-  font-size: 12px;
-}
-
-.toolbar {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
+        <div className="toolbar">
+          <button onClick={addNote}>添加音符</button>
+        </div>
+      </div>
+    </div>
+  );
 }
